@@ -1,7 +1,7 @@
 import flask
 from routes.api import create_routes
 
-Dev = True
+Dev = False
 
 # Initialize flask
 app = flask.Flask(__name__)
