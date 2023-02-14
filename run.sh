@@ -1,1 +1,3 @@
-./back/runback.sh
+cd back/
+
+./runback.sh
