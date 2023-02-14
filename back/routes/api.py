@@ -1,4 +1,7 @@
 from flask import request
+import pandas as pd
+
+data = pd.read_csv('../data/dataset.csv')
 
 """
 Create routes
@@ -12,3 +15,4 @@ def create_routes(app):
     @app.route('/api/test', methods=['GET'])
     def test_function():
         return 'Hello World !'
+        #a = df['column name'].unique()
