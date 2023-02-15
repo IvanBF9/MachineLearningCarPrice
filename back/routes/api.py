@@ -2,6 +2,7 @@ from flask import request
 import pandas as pd
 import json
 import numpy
+import re
 
 data = pd.read_csv('../data/dataset.csv')
 
@@ -17,8 +18,9 @@ def create_routes(app):
     @app.route('/api/cars/list', methods=['GET'])
     def get_carlist():
         carlist = data['carmodel'].unique()
-        print(carlist)
         numpyArray = numpy.array(carlist)
-        res = pd.DataFrame(numpyArray, columns=['cars'])
+        df = pd.DataFrame(numpyArray, columns=['cars'])
+        df.index += 1
+        res = df['cars'].map(lambda x: x.lstrip().strip('\n'))#re.sub('[^A-Za-z0-9]+', '', x))
         return res.to_json()
         #a = df['column name'].unique()
