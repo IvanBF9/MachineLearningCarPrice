@@ -3,3 +3,5 @@ gunicorn
 pandas
 numpy
 requests
+pickle-mixin
+joblib
