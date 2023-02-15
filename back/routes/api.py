@@ -4,8 +4,10 @@ import json
 import numpy
 import re
 import pickle
+import joblib
 
 data = pd.read_csv('../data/dataset.csv')
+data['price'] = data['price'].str.strip().str.extract(r'([0-9 ]+)')[0].str.replace(' ', '').astype('int')
 
 """
 Create routes
@@ -29,7 +31,7 @@ def create_routes(app):
     def predict():
         loaded_model = pickle.load(open('../notebook/model', 'rb'))
 
-        data = {
+        new_data = {
             'carmodel' : [34],
             'miseencirculation': [2016],
             'kilometrage': [0.133091],
@@ -39,7 +41,9 @@ def create_routes(app):
             'puissancedin': [59]
         }
 
-        X_predict = pd.DataFrame(data,
+        X_predict = pd.DataFrame(new_data,
         columns = ['carmodel', 'miseencirculation', 'kilometrage', 'boîtedevitesse', 'color', 'car_type', 'puissancedin'])
         result = loaded_model.predict(X_predict)
-        return str(result)
+        scaler = joblib.load('../notebook/scaler.save') 
+        result = scaler.inverse_transform(result.reshape(-1, 1))
+        return str(result[0][0])
