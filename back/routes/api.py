@@ -31,7 +31,6 @@ def create_routes(app):
             'energie': custom_encoder('energie'),
             'boite': custom_encoder('boite'),
             'premiere_main': custom_encoder('premiere_main'),
-            'vendeur': custom_encoder('vendeur'),
         })
 
     """
@@ -53,7 +52,6 @@ def create_routes(app):
             'premiere_main':[0],
             'puissance':[130],
             'departement':[33],
-            'vendeur':[0]
         }
 
         X_predict = pd.DataFrame(new_data,
@@ -69,7 +67,6 @@ def create_routes(app):
             'premiere_main',
             'puissance',
             'departement',
-            'vendeur'
         ])
         result = loaded_model.predict(X_predict)
         return str(result[0])
