@@ -40,18 +40,20 @@ def create_routes(app):
     def predict():
         loaded_model = pickle.load(open('../notebooks/model', 'rb'))
 
+        body = request.get_json()
+
         new_data = {
-            'model':[350],
-            'annee':[2019],
-            'mise_en_circulation':[2019],
-            'kilometrage':[63231],
-            'energie':[2],
-            'boite':[2],
-            'nb_portes':[5],
-            'nb_places':[5],
-            'premiere_main':[0],
-            'puissance':[130],
-            'departement':[33],
+            'model':[body['model']],
+            'annee':[body['annee']],
+            'mise_en_circulation':[body['mise_en_circulation']],
+            'kilometrage':[body['kilometrage']],
+            'energie':[body['energie']],
+            'boite':[body['boite']],
+            'nb_portes':[body['nb_portes']],
+            'nb_places':[body['nb_places']],
+            'premiere_main':[body['premiere_main']],
+            'puissance':[body['puissance']],
+            'departement':[body['departement']],
         }
 
         X_predict = pd.DataFrame(new_data,
