@@ -1,18 +1,22 @@
 import { useState } from "react";
 import "../App.css";
-import Loader from "../components/Loader";
-import RS6 from "../assets/rs6.png";
-import Navigation from "../components/Nav";
+import Background from "../assets/bg.png";
+import Loader from "../components/Loader/Loader";
+import Nav from "../components/Nav";
+import CardForm from "../components/CardForm";
+import CardResult from "../components/CardResult";
 
 function App() {
   return (
-    <>
-      <Navigation />
+    <div id="App">
       <Loader />
-      {/* <div className="App">
-        <img className="hero_banner" src={RS6} alt="RS6" />
-      </div> */}
-    </>
+      <img src={Background} alt="background" className="map" />
+      <Nav />
+      <div id="container" className="bg-base my-4">
+        <CardForm />
+        <CardResult />
+      </div>
+    </div>
   );
 }
 

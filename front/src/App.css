@@ -1,12 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
-.App {
-  height: 100dvh;
+#App {
+  position: relative;
+  min-height: 100dvh;
   width: 100dvw;
+  max-width: 1920px;
 }
 
 .loader {
@@ -21,5 +28,69 @@
 
   height: 100dvh;
   width: 100dvw;
-  background: #2c2b34;
+}
+
+img.map {
+  z-index: -1;
+  position: fixed;
+  right: 0;
+  height: 100%;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  min-height: 100dvh;
+  width: 100dvw;
+  max-width: 1920px;
+
+  padding: 50px 0;
+
+  margin: auto;
+}
+
+#contentBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  min-height: 300px;
+
+  margin-bottom: 50px;
+  background: #f3f3f3;
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+}
+
+#children {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem !important;
+}
+
+#formParent {
+  justify-content: space-between;
+
+  gap: 30px;
+}
+
+#formParent div {
+  width: 30%;
+}
+
+#explainBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+
+  width: 60%;
+
+  background: #f3f3f3;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
+    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
