@@ -1,6 +1,18 @@
 import React from "react";
+import GetParams from "../services/GetParams";
 
 const Form = () => {
+  const [params, setParams] = React.useState({});
+
+  React.useEffect(() => {
+    const getParams = async () => {
+      const params = await GetParams();
+      setParams(params);
+      console.log(params);
+    };
+    getParams();
+  }, []);
+
   return (
     <div>
       <div className="input-group mb-[30px]">
@@ -8,8 +20,6 @@ const Form = () => {
           <span>Rechercher un modèle de voiture</span>
           <input
             type="text"
-            key="search-bar"
-            // onChange={(e) => onChange(e.target.value)}
             placeholder="Ex : Mercedes Classe A"
             className="input input-bordered"
           />
@@ -32,8 +42,10 @@ const Form = () => {
           <label className="input-group input-group-vertical">
             <span>Date de mise en circulation</span>
             <input
-              type="date"
-              placeholder="Ex : 01/01/2021"
+              type="number"
+              min="1960"
+              max={new Date().getFullYear()}
+              placeholder="Ex : 2015"
               className="input input-bordered"
             />
           </label>
@@ -53,24 +65,42 @@ const Form = () => {
         <div>
           <label className="input-group input-group-vertical">
             <span>Type de carburant</span>
-            <select className="select select-bordered w-100">
+            <select
+              className="select select-bordered w-100 capitalize"
+              defaultValue={0}
+            >
               <option disabled selected>
                 Sélectionner
               </option>
-              <option>Diesel</option>
-              <option>Essence</option>
+              {params.boite &&
+                params.energie.decoded.map((param, index) => (
+                  <option value={params.energie.encoded[index]} key={param}>
+                    {param}
+                  </option>
+                ))}
             </select>
           </label>
         </div>
         <div>
           <label className="input-group input-group-vertical">
             <span>Type de boite de vitesse</span>
-            <select className="select select-bordered w-100">
+            <select
+              className="select select-bordered w-100 capitalize"
+              defaultValue={0}
+            >
               <option disabled selected>
                 Sélectionner
               </option>
-              <option>Automatique</option>
-              <option>Manuelle</option>
+              {params.boite &&
+                params.boite.decoded.map((param, index) => (
+                  <option
+                    value={params.boite.encoded[index]}
+                    key={param}
+                    className="capitalize"
+                  >
+                    {index == 2 ? "électrique" : param}
+                  </option>
+                ))}
             </select>
           </label>
         </div>
