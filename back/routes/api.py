@@ -6,44 +6,70 @@ import re
 import pickle
 import joblib
 
-data = pd.read_csv('../data/dataset.csv')
-data['price'] = data['price'].str.strip().str.extract(r'([0-9 ]+)')[0].str.replace(' ', '').astype('int')
+data = pd.read_csv('../data/dataset_relational.csv')
 
 """
 Create routes
 """
+
+def custom_encoder(col):
+    return {
+        'decoded' : data[str(col)].unique().tolist(),
+        'encoded' : data[str(col)+'_ecoded'].unique().tolist()
+    }
+
 def create_routes(app):
 
     """
-    Car list
+    Cars list
     """
-    # Arbo counters
-    @app.route('/api/cars/list', methods=['GET'])
-    def get_carlist():
-        carlist = data['carmodel'].unique()
-        numpyArray = numpy.array(carlist)
-        df = pd.DataFrame(numpyArray, columns=['cars'])
-        df.index += 1
-        res = df['cars'].map(lambda x: x.lstrip().strip('\n'))
-        return res.to_json()
+    @app.route('/api/cars/params/list', methods=['GET'])
+    def get_cars_list():
+        # print(custom_encoder())
+        return json.dumps({
+            'model': custom_encoder('model'),
+            'energie': custom_encoder('energie'),
+            'boite': custom_encoder('boite'),
+            'premiere_main': custom_encoder('premiere_main'),
+            'vendeur': custom_encoder('vendeur'),
+        })
 
+    """
+    Predict route params
+    """
     @app.route('/api/cars/predict', methods=['POST'])
     def predict():
-        loaded_model = pickle.load(open('../notebook/model', 'rb'))
+        loaded_model = pickle.load(open('../notebooks/model', 'rb'))
 
         new_data = {
-            'carmodel' : [34],
-            'miseencirculation': [2016],
-            'kilometrage': [0.133091],
-            'boîtedevitesse': [0.0],
-            'color': [31.0],
-            'car_type': [1.0],
-            'puissancedin': [59]
+            'model':[350],
+            'annee':[2019],
+            'mise_en_circulation':[2019],
+            'kilometrage':[63231],
+            'energie':[2],
+            'boite':[2],
+            'nb_portes':[5],
+            'nb_places':[5],
+            'premiere_main':[0],
+            'puissance':[130],
+            'departement':[33],
+            'vendeur':[0]
         }
 
         X_predict = pd.DataFrame(new_data,
-        columns = ['carmodel', 'miseencirculation', 'kilometrage', 'boîtedevitesse', 'color', 'car_type', 'puissancedin'])
+        columns = [
+            'model',
+            'annee',
+            'mise_en_circulation',
+            'kilometrage',
+            'energie',
+            'boite',
+            'nb_portes',
+            'nb_places',
+            'premiere_main',
+            'puissance',
+            'departement',
+            'vendeur'
+        ])
         result = loaded_model.predict(X_predict)
-        scaler = joblib.load('../notebook/scaler.save') 
-        result = scaler.inverse_transform(result.reshape(-1, 1))
-        return str(result[0][0])
+        return str(result[0])
