@@ -9,7 +9,6 @@ const CardForm = () => {
   const [selectedModel, setSelectedModel] = React.useState(undefined);
   const [isOpened, setOpened] = React.useState(false);
   const [carValue, setCarValue] = React.useState(undefined);
-  
 
   React.useEffect(() => {
     const getParams = async () => {
@@ -88,7 +87,7 @@ const CardForm = () => {
           <h2 className="card-title text-2xl text-base-100">
             Informations sur l'auto
           </h2>
-          <hr className="my-3" />
+          <hr className="my-4" />
           <div>
             <div className="input-group mb-[30px]">
               <label className="input-group input-group-vertical">
@@ -105,7 +104,11 @@ const CardForm = () => {
                 {models.length > 0 &&
                   isOpened &&
                   models.map((model) => (
-                    <span className="bg-base-100" onClick={selectModel} customvalue={model.value}>
+                    <span
+                      className="bg-base-100"
+                      onClick={selectModel}
+                      customvalue={model.value}
+                    >
                       {model.model}
                     </span>
                   ))}
@@ -263,29 +266,38 @@ const CardForm = () => {
                 </label>
               </div>
             </div>
-            <hr className="my-3" />
+            <hr className="my-4" />
             <div className="card-actions justify-center">
-              <button onClick={sendForm} className="btn btn-primary w-[300px]">
+              <label
+                onClick={sendForm}
+                htmlFor="my-modal-4"
+                className="btn btn-primary w-[300px]"
+              >
                 Estimer !
-              </button>
+              </label>
+              <input type="checkbox" id="my-modal-4" className="modal-toggle" />
+              <label htmlFor="my-modal-4" className="modal cursor-pointer">
+                <label className="modal-box relative" htmlFor="">
+                  <h2 className="text-2xl text-white mb-4">
+                    Voici notre estimation !
+                  </h2>
+                  <p className="text-white">
+                    Il est important de se rappeler que toute estimation de
+                    valeur pour une voiture n'est qu'une approximation.
+                  </p>
+                  <hr className="my-4" />
+                  <h3 className="text-xl text-white">
+                    Prix de vente :{" "}
+                    <span className="font-bold">{carValue}€</span>
+                  </h3>
+                  <hr className="my-4" />
+                  <img
+                    src="https://media.tenor.com/hwVh_vsQWGgAAAAC/gitan-tu-vas-repartir-mal.gif"
+                    className="rounded"
+                  />
+                </label>
+              </label>
             </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="explainBox" className="card">
-        <div className="card-body w-[100%]">
-          <h2 className="card-title text-2xl text-base-100">
-            Résultat d'estimation
-          </h2>
-          <hr className="my-3" />
-          <div className="flex justify-between items-center w-100">
-            <div className="w-5/6">
-              <h3 className="text-xl text-base-100">
-                Prix de vente : {carValue}
-              </h3>
-            </div>
-            <img src={Car} alt="car" className="car h-[150px]" />
           </div>
         </div>
       </div>

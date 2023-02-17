@@ -43,11 +43,10 @@ img.map {
   justify-content: center;
   align-items: center;
 
-  min-height: 100dvh;
   width: 100dvw;
   max-width: 1920px;
 
-  padding: 50px 0;
+  padding: 100px 0 0 0;
 
   margin: auto;
 }
@@ -95,7 +94,6 @@ img.map {
     rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
 }
 
-
 .selectbar {
   position: absolute;
   z-index: 9;
@@ -104,13 +102,13 @@ img.map {
   border-radius: 0.5rem !important;
 }
 
-.selectbar span{
+.selectbar span {
   cursor: pointer;
   transition: all 0.2;
   transform: scale(1);
 }
 
-.selectbar span:hover{
+.selectbar span:hover {
   background: #a991f7;
   color: white;
   transform: scale(1.01);
