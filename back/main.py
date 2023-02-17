@@ -13,6 +13,7 @@ def apply_caching(response):
     response.headers["Content-Type"] = "application/json"
     response.headers['Access-Control-Allow-Origin'] = '*'
     response.headers['Access-Control-Allow-Headers'] = '*'
+    response.headers['Upgrade-Insecure-Requests'] = 1
     return response
 
 # Import routes
