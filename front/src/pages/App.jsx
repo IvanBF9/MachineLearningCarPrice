@@ -5,8 +5,10 @@ import Background from "../assets/bg.png";
 import Loader from "../components/Loader/Loader";
 import Nav from "../components/Nav";
 import CardForm from "../components/CardForm";
-function App() {
+import { JupyterNotebookViewer } from "react-jupyter-notebook-viewer";
+const DARK_MODE = true;
 
+function App() {
   return (
     <div id="App">
       <Loader />
@@ -14,6 +16,28 @@ function App() {
       <Nav />
       <div id="container" className="bg-base my-4">
         <CardForm />
+        <div className="card w-3/5">
+          <div className="card-body bg-white">
+            <JupyterNotebookViewer
+              filePath="/notebooks/data_exploratory.ipynb"
+              className="notebook-class"
+              notebookInputLanguage="python"
+              // notebookOutputLanguage="python"
+              inputCodeDarkTheme={DARK_MODE}
+              outputDarkTheme={DARK_MODE}
+              inputMarkdownDarkTheme={DARK_MODE}
+              showInputLineNumbers={true}
+              showOutputLineNumbers={false}
+              withOnClick={true}
+              hideCodeBlocks={false}
+              hideMarkdownBlocks={false}
+              hideAllOutputs={false}
+              hideAllInputs={false}
+              // remarkPlugins={[remarkMath]}
+              // rehypePlugins={[rehypeKatex]}
+            />
+          </div>
+        </div>
       </div>
     </div>
   );
