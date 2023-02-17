@@ -1,12 +1,12 @@
 import { useState } from "react";
+import React from "react";
 import "../App.css";
 import Background from "../assets/bg.png";
 import Loader from "../components/Loader/Loader";
 import Nav from "../components/Nav";
 import CardForm from "../components/CardForm";
-import CardResult from "../components/CardResult";
-
 function App() {
+
   return (
     <div id="App">
       <Loader />
@@ -14,7 +14,6 @@ function App() {
       <Nav />
       <div id="container" className="bg-base my-4">
         <CardForm />
-        <CardResult />
       </div>
     </div>
   );
