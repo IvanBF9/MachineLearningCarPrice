@@ -288,7 +288,12 @@ const CardForm = () => {
                   <hr className="my-4" />
                   <h3 className="text-xl text-white">
                     Prix de vente :{" "}
-                    <span className="font-bold">{carValue}€</span>
+                    <span className="font-bold">
+                      {carValue.toLocaleString("fr-FR", {
+                        maximumFractionDigits: 3,
+                      })}{" "}
+                      €
+                    </span>
                   </h3>
                   <hr className="my-4" />
                   <img
