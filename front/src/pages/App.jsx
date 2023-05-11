@@ -1,11 +1,10 @@
-import { useState } from "react";
 import React from "react";
-import "../App.css";
 import Background from "../assets/bg.png";
 import Loader from "../components/Loader/Loader";
 import Nav from "../components/Nav";
 import CardForm from "../components/CardForm";
 import { JupyterNotebookViewer } from "react-jupyter-notebook-viewer";
+import "../App.css";
 const DARK_MODE = true;
 
 function App() {
@@ -17,6 +16,9 @@ function App() {
       <div id="container" className="bg-base my-4">
         <CardForm />
 
+        {/* 
+        Notebooks
+        */}
         <div className="card w-3/5">
           <div className="card-body bg-[#f3f3f3]">
             <JupyterNotebookViewer
