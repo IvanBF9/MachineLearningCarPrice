@@ -2,6 +2,7 @@ import React from "react";
 import GetParams from "../services/GetParams";
 import GetPrediction from "../services/GetPrediction";
 import Car from "../assets/car.png";
+import BgVideo from "../assets/bg.mp4";
 
 const CardForm = () => {
   const [params, setParams] = React.useState({});
@@ -84,8 +85,8 @@ const CardForm = () => {
     <>
       <div id="contentBox" className="card">
         <div className="card-body">
-          <h2 className="card-title text-2xl text-base-100">
-            Informations sur l'auto
+          <h2 className="card-title text-2xl text-white">
+            A propos de votre voiture
           </h2>
           <hr className="my-4" />
           <div>
@@ -261,7 +262,7 @@ const CardForm = () => {
                   <input
                     type="checkbox"
                     id="firsthand"
-                    className="checkbox checkbox-primary"
+                    className="checkbox bg-red-700"
                   />
                 </label>
               </div>
@@ -271,7 +272,7 @@ const CardForm = () => {
               <label
                 onClick={sendForm}
                 htmlFor="my-modal-4"
-                className="btn btn-primary w-[300px]"
+                className="btn  bg-red-700 w-[300px]"
               >
                 Estimer !
               </label>
@@ -289,17 +290,17 @@ const CardForm = () => {
                   <h3 className="text-xl text-white">
                     Prix de vente :{" "}
                     <span className="font-bold">
-                      {carValue && carValue.toLocaleString("fr-FR", {
-                        maximumFractionDigits: 3,
-                      })}{" "}
+                      {carValue &&
+                        carValue.toLocaleString("fr-FR", {
+                          maximumFractionDigits: 3,
+                        })}{" "}
                       €
                     </span>
                   </h3>
                   <hr className="my-4" />
-                  <img
-                    src="https://media.tenor.com/hwVh_vsQWGgAAAAC/gitan-tu-vas-repartir-mal.gif"
-                    className="rounded"
-                  />
+                  <video autoPlay loop muted width="100%">
+                    <source src={BgVideo} type="video/mp4" />
+                  </video>
                 </label>
               </label>
             </div>

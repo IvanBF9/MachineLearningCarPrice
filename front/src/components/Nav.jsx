@@ -1,15 +1,10 @@
 import React from "react";
+import logo from "../assets/logo.png";
 
 const Nav = () => {
   return (
-    <div className="navbar bg-primary text-primary-content">
-      <div className="navbar-start">
-        <a className="btn btn-ghost normal-case text-xl" href="/">
-          Car retailling
-        </a>
-      </div>
-      <div className="navbar-center"></div>
-      <div className="navbar-end"></div>
+    <div className="z-50 fixed top-0 w-full flex justify-center border-b ">
+      <img className="h-28" src={logo} alt="" />
     </div>
   );
 };

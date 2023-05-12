@@ -14,6 +14,8 @@
   min-height: 100dvh;
   width: 100dvw;
   max-width: 1920px;
+
+  background: #000;
 }
 
 .loader {
@@ -49,20 +51,50 @@ img.map {
   padding: 100px 0;
 
   margin: auto;
+
+  overflow: hidden;
 }
 
 #contentBox {
+  z-index: 9999;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   width: 60%;
   min-height: 300px;
 
-  margin-bottom: 50px;
-  background: #f3f3f3;
+  background: rgba(0, 0, 0, 0.48);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
 
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px,
-    rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;
+  -webkit-animation: slide-bottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+  animation: slide-bottom 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@-webkit-keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
+}
+@keyframes slide-bottom {
+  0% {
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  100% {
+    -webkit-transform: translateY(100px);
+    transform: translateY(100px);
+  }
 }
 
 #children {
