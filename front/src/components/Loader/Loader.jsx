@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import "../../App.css";
-import Code from "./Code";
 import CardForm from "../CardForm";
 
 const Loader = () => {
@@ -9,7 +8,7 @@ const Loader = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 5000);
+    }, 2500);
     return () => clearTimeout(timer);
   }, []);
 
