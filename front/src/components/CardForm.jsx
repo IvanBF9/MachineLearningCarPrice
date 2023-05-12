@@ -2,6 +2,7 @@ import React from "react";
 import GetParams from "../services/GetParams";
 import GetPrediction from "../services/GetPrediction";
 import Car from "../assets/car.png";
+import BgVideo from "../assets/bg.mp4";
 
 const CardForm = () => {
   const [params, setParams] = React.useState({});
@@ -55,11 +56,9 @@ const CardForm = () => {
       const km = document.querySelector("#km").value;
       const carburant = document.querySelector("#carburant").value;
       const boite = document.querySelector("#boite").value;
-      const portes = document.querySelector("#portes").value;
-      const places = document.querySelector("#places").value;
+      const cylinder = document.querySelector("#cylinder").value;
       const cv = document.querySelector("#cv").value;
       const dp = document.querySelector("#dp").value;
-      const firsthand = document.querySelector("#firsthand").checked;
 
       const body = {
         model: parseFloat(selectedModel),
@@ -68,9 +67,7 @@ const CardForm = () => {
         kilometrage: parseFloat(km),
         energie: parseFloat(carburant),
         boite: parseFloat(boite),
-        nb_portes: parseFloat(portes),
-        nb_places: parseFloat(places),
-        premiere_main: firsthand ? 1 : 0,
+        cylinder: parseFloat(cylinder),
         puissance: parseFloat(cv),
         departement: parseFloat(dp),
       };
@@ -84,8 +81,8 @@ const CardForm = () => {
     <>
       <div id="contentBox" className="card">
         <div className="card-body">
-          <h2 className="card-title text-2xl text-base-100">
-            Informations sur l'auto
+          <h2 className="card-title text-2xl text-white">
+            A propos de votre voiture
           </h2>
           <hr className="my-4" />
           <div>
@@ -203,26 +200,13 @@ const CardForm = () => {
               </div>
               <div>
                 <label className="input-group input-group-vertical">
-                  <span>Nombre de portes</span>
+                  <span>Cylindré</span>
                   <input
-                    id="portes"
+                    id="cylinder"
                     type="text"
                     min="2"
-                    max="5"
-                    placeholder="Ex : 5"
-                    className="input input-bordered"
-                  />
-                </label>
-              </div>
-              <div>
-                <label className="input-group input-group-vertical">
-                  <span>Nombre de places</span>
-                  <input
-                    id="places"
-                    type="text"
-                    min="2"
-                    max="7"
-                    placeholder="Ex : 5"
+                    max="10"
+                    placeholder="Ex : 1.6"
                     className="input input-bordered"
                   />
                 </label>
@@ -252,26 +236,12 @@ const CardForm = () => {
                 </label>
               </div>
             </div>
-            <div className="w-100 flex justify-center items-center mt-[30px]">
-              <div className="flex justify-center w-1/3">
-                <label className="label cursor-pointer">
-                  <span className=" text-md text-base-100 mr-2">
-                    Première main ?
-                  </span>
-                  <input
-                    type="checkbox"
-                    id="firsthand"
-                    className="checkbox checkbox-primary"
-                  />
-                </label>
-              </div>
-            </div>
-            <hr className="my-4" />
+            <hr className="my-6" />
             <div className="card-actions justify-center">
               <label
                 onClick={sendForm}
                 htmlFor="my-modal-4"
-                className="btn btn-primary w-[300px]"
+                className="btn  bg-red-700 w-[300px]"
               >
                 Estimer !
               </label>
@@ -289,17 +259,17 @@ const CardForm = () => {
                   <h3 className="text-xl text-white">
                     Prix de vente :{" "}
                     <span className="font-bold">
-                      {carValue && carValue.toLocaleString("fr-FR", {
-                        maximumFractionDigits: 3,
-                      })}{" "}
+                      {carValue &&
+                        carValue.toLocaleString("fr-FR", {
+                          maximumFractionDigits: 3,
+                        })}{" "}
                       €
                     </span>
                   </h3>
                   <hr className="my-4" />
-                  <img
-                    src="https://media.tenor.com/hwVh_vsQWGgAAAAC/gitan-tu-vas-repartir-mal.gif"
-                    className="rounded"
-                  />
+                  <video autoPlay loop muted width="100%">
+                    <source src={BgVideo} type="video/mp4" />
+                  </video>
                 </label>
               </label>
             </div>

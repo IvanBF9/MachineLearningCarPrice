@@ -2,82 +2,23 @@ import React from "react";
 import Background from "../assets/bg.png";
 import Loader from "../components/Loader/Loader";
 import Nav from "../components/Nav";
+import Video from "../components/Video";
 import CardForm from "../components/CardForm";
 import { JupyterNotebookViewer } from "react-jupyter-notebook-viewer";
 import "../App.css";
+import CardTopCar from "../components/CardTopCar";
 const DARK_MODE = true;
 
 function App() {
   return (
     <div id="App">
-      <Loader />
-      <img src={Background} alt="background" className="map" />
       <Nav />
+      <Video />
       <div id="container" className="bg-base my-4">
-        <CardForm />
-
-        {/* 
-        Notebooks
-        */}
-        <div className="card w-3/5">
-          <div className="card-body bg-[#f3f3f3]">
-            <JupyterNotebookViewer
-              filePath="/notebooks/data_exploratory.ipynb"
-              className="notebook-class"
-              notebookInputLanguage="python"
-              inputCodeDarkTheme={DARK_MODE}
-              outputDarkTheme={DARK_MODE}
-              inputMarkdownDarkTheme={DARK_MODE}
-              showInputLineNumbers={true}
-              showOutputLineNumbers={false}
-              withOnClick={true}
-              hideCodeBlocks={false}
-              hideMarkdownBlocks={false}
-              hideAllOutputs={false}
-              hideAllInputs={false}
-            />
-          </div>
-        </div>
-
-        <div className="card w-3/5 mt-[50px]">
-          <div className="card-body bg-[#f3f3f3]">
-            <JupyterNotebookViewer
-              filePath="/notebooks/csv_cleaner.ipynb"
-              className="notebook-class"
-              notebookInputLanguage="python"
-              inputCodeDarkTheme={DARK_MODE}
-              outputDarkTheme={DARK_MODE}
-              inputMarkdownDarkTheme={DARK_MODE}
-              showInputLineNumbers={true}
-              showOutputLineNumbers={false}
-              withOnClick={true}
-              hideCodeBlocks={false}
-              hideMarkdownBlocks={false}
-              hideAllOutputs={false}
-              hideAllInputs={false}
-            />
-          </div>
-        </div>
-
-        <div className="card w-3/5 mt-[50px]">
-          <div className="card-body bg-[#f3f3f3]">
-            <JupyterNotebookViewer
-              filePath="/notebooks/training_model.ipynb"
-              className="notebook-class"
-              notebookInputLanguage="python"
-              inputCodeDarkTheme={DARK_MODE}
-              outputDarkTheme={DARK_MODE}
-              inputMarkdownDarkTheme={DARK_MODE}
-              showInputLineNumbers={true}
-              showOutputLineNumbers={false}
-              withOnClick={true}
-              hideCodeBlocks={false}
-              hideMarkdownBlocks={false}
-              hideAllOutputs={false}
-              hideAllInputs={false}
-            />
-          </div>
-        </div>
+        <Loader />
+        <div className="h-[300px]"></div>
+        <h2 className="text-3xl font-bold text-white h-24">Top ventes !</h2>
+        <CardTopCar />
       </div>
     </div>
   );
