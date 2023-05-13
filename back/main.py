@@ -20,5 +20,5 @@ def apply_caching(response):
 create_routes(app)
 
 # Run app
-if (Dev):
-    app.run()
+# if (Dev):
+#     app.run(debug=True, port=5050)

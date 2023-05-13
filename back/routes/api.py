@@ -52,6 +52,7 @@ def create_routes(app):
         loaded_model = pickle.load(open('../notebooks/model', 'rb'))
 
         body = request.get_json()
+        print(body)
 
         new_data = {
             'model':[body['model']],
@@ -76,7 +77,6 @@ def create_routes(app):
             'pollutionNorm':[body['pollutionNorm']],
             'critAir':[body['critAir']],
             'co2':[body['co2']],
-            'picture':[body['picture']],
             'brand':[body['brand']],
             'brand_origin':[body['brand_origin']],
         }

@@ -1,6 +1,6 @@
 const GetPrediction = async (body) => {
-  console.log(body);
-  const res = await fetch("http://127.0.0.1:5000/api/cars/predict", {
+  console.log("body:",body);
+  const res = await fetch("http://127.0.0.1:5050/api/cars/predict", {
     method: "POST",
     headers: {
       Accept: "application/json",
@@ -10,6 +10,7 @@ const GetPrediction = async (body) => {
     body: JSON.stringify(body),
   });
   const response = await res.json();
+  console.log("response:",response);
   return response;
 };
 
