@@ -390,49 +390,27 @@ const CardForm = () => {
               <div>
                 <label className="input-group input-group-vertical">
                   <span>Nombre de portes</span>
-                  <select
+                  <input
                     id="doors"
-                    className="select select-bordered w-100 capitalize"
-                    defaultValue={0}
-                  >
-                    <option disabled selected>
-                      Sélectionner
-                    </option>
-                    {params.doors &&
-                      params.doors.decoded.map((param, index) => (
-                        <option
-                          value={params.doors.encoded[index]}
-                          key={param}
-                          className="capitalize"
-                        >
-                          {param}
-                        </option>
-                      ))}
-                  </select>
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 5"
+                    className="input input-bordered"
+                  />
                 </label>
               </div>
               <div>
                 <label className="input-group input-group-vertical">
                   <span>Nombre de siège</span>
-                  <select
+                  <input
                     id="seats"
-                    className="select select-bordered w-100 capitalize"
-                    defaultValue={0}
-                  >
-                    <option disabled selected>
-                      Sélectionner
-                    </option>
-                    {params.seats &&
-                      params.seats.decoded.map((param, index) => (
-                        <option
-                          value={params.seats.encoded[index]}
-                          key={param}
-                          className="capitalize"
-                        >
-                          {param}
-                        </option>
-                      ))}
-                  </select>
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 5"
+                    className="input input-bordered"
+                  />
                 </label>
               </div>
               <div>
@@ -524,7 +502,7 @@ const CardForm = () => {
               </div>
               <div>
                 <label className="input-group input-group-vertical">
-                  <span>co2</span>
+                  <span>Emission de CO2</span>
                   <select
                     id="co2"
                     className="select select-bordered w-100 capitalize"
