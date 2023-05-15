@@ -12,11 +12,10 @@ const DARK_MODE = true;
 function App() {
   return (
     <div id="App">
-      <Nav />
       <Video />
-      <div id="container" className="bg-base my-4">
+      <div id="container" className="bg-base">
         <Loader />
-        <div className="h-[300px]"></div>
+        <div className="h-[100px]"></div>
         <h2 className="text-3xl font-bold text-white h-24">Top ventes !</h2>
         <CardTopCar />
       </div>

@@ -58,7 +58,8 @@ const CardForm = () => {
       const zip_code = document.querySelector("#zip_code").value;
       const cylinder = document.querySelector("#cylinder").value;
       const horsepower = document.querySelector("#horsepower").value;
-      const technicalControl = document.querySelector("#technicalControl").value;
+      const technicalControl =
+        document.querySelector("#technicalControl").value;
       const origin = document.querySelector("#origin").value;
       const firstHand = document.querySelector("#firstHand").value;
       const owners = document.querySelector("#owners").value;
@@ -67,7 +68,8 @@ const CardForm = () => {
       const doors = document.querySelector("#doors").value;
       const seats = document.querySelector("#seats").value;
       const length = document.querySelector("#length").value;
-      const trunkVolumeRange = document.querySelector("#trunkVolumeRange").value;
+      const trunkVolumeRange =
+        document.querySelector("#trunkVolumeRange").value;
       const ratedHorsePower = document.querySelector("#ratedHorsePower").value;
       const pollutionNorm = document.querySelector("#pollutionNorm").value;
       const critAir = document.querySelector("#critAir").value;
@@ -111,7 +113,7 @@ const CardForm = () => {
     <>
       <div id="contentBox" className="card">
         <div className="card-body">
-          <h2 className="card-title text-2xl">
+          <h2 className="card-title text-2xl text-white">
             A propos de votre voiture
           </h2>
           <hr className="my-4" />
@@ -214,8 +216,6 @@ const CardForm = () => {
                       ))}
                   </select>
                 </label>
-
-
               </div>
               <div>
                 <label className="input-group input-group-vertical">
@@ -585,9 +585,7 @@ const CardForm = () => {
               <input type="checkbox" id="my-modal-4" className="modal-toggle" />
               <label htmlFor="my-modal-4" className="modal cursor-pointer">
                 <label className="modal-box relative" htmlFor="">
-                  <h2 className="text-2xl mb-4">
-                    Voici notre estimation !
-                  </h2>
+                  <h2 className="text-2xl mb-4">Voici notre estimation !</h2>
                   <p>
                     Il est important de se rappeler que toute estimation de
                     valeur pour une voiture n'est qu'une approximation.
