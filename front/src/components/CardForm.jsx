@@ -256,7 +256,7 @@ const CardForm = () => {
               </div>
               <div>
                 <label className="input-group input-group-vertical">
-                  <span>origin</span>
+                  <span>Origine ?</span>
                   <select
                     id="origin"
                     className="select select-bordered w-100 capitalize"
