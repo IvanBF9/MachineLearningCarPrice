@@ -22,15 +22,26 @@ def create_routes(app):
 
     """
     Cars list
+    
+    columns = ['model', 'externalColor', 'internalColor', 'brand', 'brand_origin', 'energy', 'gear_box', 'origin', 'technicalControl', 'firstHand', 'trunkVolumeRange', 'pollutionNorm', 'co2']
     """
     @app.route('/api/cars/params/list', methods=['GET'])
     def get_cars_list():
         # print(custom_encoder())
         return json.dumps({
             'model': custom_encoder('model'),
-            'energie': custom_encoder('energie'),
-            'boite': custom_encoder('boite'),
-            'premiere_main': custom_encoder('premiere_main'),
+            'externalColor': custom_encoder('externalColor'),
+            'internalColor': custom_encoder('internalColor'),
+            'brand': custom_encoder('brand'),
+            'brand_origin': custom_encoder('brand_origin'),
+            'energy': custom_encoder('energy'),
+            'gear_box': custom_encoder('gear_box'),
+            'origin': custom_encoder('origin'),
+            'technicalControl': custom_encoder('technicalControl'),
+            'firstHand': custom_encoder('firstHand'),
+            'trunkVolumeRange': custom_encoder('trunkVolumeRange'),
+            'pollutionNorm': custom_encoder('pollutionNorm'),
+            'co2': custom_encoder('co2'),
         })
 
     """
@@ -41,34 +52,61 @@ def create_routes(app):
         loaded_model = pickle.load(open('../notebooks/model', 'rb'))
 
         body = request.get_json()
+        print(body)
 
         new_data = {
             'model':[body['model']],
-            'annee':[body['annee']],
-            'mise_en_circulation':[body['mise_en_circulation']],
-            'kilometrage':[body['kilometrage']],
-            'energie':[body['energie']],
-            'boite':[body['boite']],
-            'nb_portes':[body['nb_portes']],
-            'nb_places':[body['nb_places']],
-            'premiere_main':[body['premiere_main']],
-            'puissance':[body['puissance']],
-            'departement':[body['departement']],
+            'energy':[body['energy']],
+            'gear_box':[body['gear_box']],
+            'kilometers':[body['kilometers']],
+            'year':[body['year']],
+            'zip_code':[body['zip_code']],
+            'cylinder':[body['cylinder']],
+            'horsepower':[body['horsepower']],
+            'origin':[body['origin']],
+            'technicalControl':[body['technicalControl']],
+            'firstHand':[body['firstHand']],
+            'owners':[body['owners']],
+            'externalColor':[body['externalColor']],
+            'internalColor':[body['internalColor']],
+            'doors':[body['doors']],
+            'seats':[body['seats']],
+            'length':[body['length']],
+            'trunkVolumeRange':[body['trunkVolumeRange']],
+            'ratedHorsePower':[body['ratedHorsePower']],
+            'pollutionNorm':[body['pollutionNorm']],
+            'critAir':[body['critAir']],
+            'co2':[body['co2']],
+            'brand':[body['brand']],
+            'brand_origin':[body['brand_origin']],
         }
 
         X_predict = pd.DataFrame(new_data,
         columns = [
             'model',
-            'annee',
-            'mise_en_circulation',
-            'kilometrage',
-            'energie',
-            'boite',
-            'nb_portes',
-            'nb_places',
-            'premiere_main',
-            'puissance',
-            'departement',
+            'energy',
+            'gear_box',
+            'kilometers',
+            'year',
+            'zip_code',
+            'cylinder',
+            'horsepower',
+            'origin',
+            'technicalControl',
+            'firstHand',
+            'owners',
+            'externalColor',
+            'internalColor',
+            'doors',
+            'seats',
+            'length',
+            'trunkVolumeRange',
+            'ratedHorsePower',
+            'pollutionNorm',
+            'critAir',
+            'co2',
+            'brand',
+            'brand_origin',
         ])
         result = loaded_model.predict(X_predict)
         return str(result[0])

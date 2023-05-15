@@ -51,25 +51,55 @@ const CardForm = () => {
 
   async function sendForm() {
     if (selectedModel) {
-      const annee = document.querySelector("#annee").value;
-      const misecirculation = document.querySelector("#misecirculation").value;
-      const km = document.querySelector("#km").value;
-      const carburant = document.querySelector("#carburant").value;
-      const boite = document.querySelector("#boite").value;
+      const energy = document.querySelector("#energy").value;
+      const gear_box = document.querySelector("#gear_box").value;
+      const kilometers = document.querySelector("#kilometers").value;
+      const year = document.querySelector("#year").value;
+      const zip_code = document.querySelector("#zip_code").value;
       const cylinder = document.querySelector("#cylinder").value;
-      const cv = document.querySelector("#cv").value;
-      const dp = document.querySelector("#dp").value;
+      const horsepower = document.querySelector("#horsepower").value;
+      const technicalControl = document.querySelector("#technicalControl").value;
+      const origin = document.querySelector("#origin").value;
+      const firstHand = document.querySelector("#firstHand").value;
+      const owners = document.querySelector("#owners").value;
+      const externalColor = document.querySelector("#externalColor").value;
+      const internalColor = document.querySelector("#internalColor").value;
+      const doors = document.querySelector("#doors").value;
+      const seats = document.querySelector("#seats").value;
+      const length = document.querySelector("#length").value;
+      const trunkVolumeRange = document.querySelector("#trunkVolumeRange").value;
+      const ratedHorsePower = document.querySelector("#ratedHorsePower").value;
+      const pollutionNorm = document.querySelector("#pollutionNorm").value;
+      const critAir = document.querySelector("#critAir").value;
+      const co2 = document.querySelector("#co2").value;
+      const brand = document.querySelector("#brand").value;
+      const brand_origin = document.querySelector("#brand_origin").value;
 
       const body = {
         model: parseFloat(selectedModel),
-        annee: parseFloat(annee),
-        mise_en_circulation: parseFloat(misecirculation),
-        kilometrage: parseFloat(km),
-        energie: parseFloat(carburant),
-        boite: parseFloat(boite),
+        energy: parseFloat(energy),
+        gear_box: parseFloat(gear_box),
+        kilometers: parseFloat(kilometers),
+        year: parseFloat(year),
+        zip_code: parseFloat(zip_code),
         cylinder: parseFloat(cylinder),
-        puissance: parseFloat(cv),
-        departement: parseFloat(dp),
+        horsepower: parseFloat(horsepower),
+        origin: parseFloat(origin),
+        technicalControl: parseFloat(technicalControl),
+        firstHand: parseFloat(firstHand),
+        owners: parseFloat(owners),
+        externalColor: parseFloat(externalColor),
+        internalColor: parseFloat(internalColor),
+        doors: parseFloat(doors),
+        seats: parseFloat(seats),
+        length: parseFloat(length),
+        trunkVolumeRange: parseFloat(trunkVolumeRange),
+        ratedHorsePower: parseFloat(ratedHorsePower),
+        pollutionNorm: parseFloat(pollutionNorm),
+        critAir: parseFloat(critAir),
+        co2: parseFloat(co2),
+        brand: parseFloat(brand),
+        brand_origin: parseFloat(brand_origin),
       };
 
       const price = await GetPrediction(body);
@@ -81,7 +111,7 @@ const CardForm = () => {
     <>
       <div id="contentBox" className="card">
         <div className="card-body">
-          <h2 className="card-title text-2xl text-white">
+          <h2 className="card-title text-2xl">
             A propos de votre voiture
           </h2>
           <hr className="my-4" />
@@ -114,22 +144,9 @@ const CardForm = () => {
             <div id="formParent" className="flex flex-wrap">
               <div>
                 <label className="input-group input-group-vertical">
-                  <span>Année de production</span>
-                  <input
-                    id="annee"
-                    type="number"
-                    min="1960"
-                    max={new Date().getFullYear()}
-                    placeholder="Ex : 2021"
-                    className="input input-bordered"
-                  />
-                </label>
-              </div>
-              <div>
-                <label className="input-group input-group-vertical">
                   <span>Date de mise en circulation</span>
                   <input
-                    id="misecirculation"
+                    id="year"
                     type="number"
                     min="1960"
                     max={new Date().getFullYear()}
@@ -142,7 +159,7 @@ const CardForm = () => {
                 <label className="input-group input-group-vertical">
                   <span>Kilomètrages ( Km )</span>
                   <input
-                    id="km"
+                    id="kilometers"
                     type="number"
                     min="10"
                     max="1000000"
@@ -155,17 +172,17 @@ const CardForm = () => {
                 <label className="input-group input-group-vertical">
                   <span>Type de carburant</span>
                   <select
-                    id="carburant"
+                    id="energy"
                     className="select select-bordered w-100 capitalize"
                     defaultValue={0}
                   >
                     <option disabled selected>
                       Sélectionner
                     </option>
-                    {params.boite &&
-                      params.energie.decoded.map((param, index) => (
+                    {params.gear_box &&
+                      params.energy.decoded.map((param, index) => (
                         <option
-                          value={params.energie.encoded[index]}
+                          value={params.energy.encoded[index]}
                           key={param}
                         >
                           {param}
@@ -178,17 +195,17 @@ const CardForm = () => {
                 <label className="input-group input-group-vertical">
                   <span>Type de boite de vitesse</span>
                   <select
-                    id="boite"
+                    id="gear_box"
                     className="select select-bordered w-100 capitalize"
                     defaultValue={0}
                   >
                     <option disabled selected>
                       Sélectionner
                     </option>
-                    {params.boite &&
-                      params.boite.decoded.map((param, index) => (
+                    {params.gear_box &&
+                      params.gear_box.decoded.map((param, index) => (
                         <option
-                          value={params.boite.encoded[index]}
+                          value={params.gear_box.encoded[index]}
                           key={param}
                           className="capitalize"
                         >
@@ -197,6 +214,8 @@ const CardForm = () => {
                       ))}
                   </select>
                 </label>
+
+
               </div>
               <div>
                 <label className="input-group input-group-vertical">
@@ -215,7 +234,7 @@ const CardForm = () => {
                 <label className="input-group input-group-vertical">
                   <span>Puissance en chevaux ( Cv )</span>
                   <input
-                    id="cv"
+                    id="horsepower"
                     type="text"
                     placeholder="Ex : 110"
                     className="input input-bordered"
@@ -226,13 +245,331 @@ const CardForm = () => {
                 <label className="input-group input-group-vertical">
                   <span>Département</span>
                   <input
-                    id="dp"
+                    id="zip_code"
                     type="number"
                     min="1"
                     max="95"
                     placeholder="Ex : 75"
                     className="input input-bordered"
                   />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>origin</span>
+                  <select
+                    id="origin"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.origin &&
+                      params.origin.decoded.map((param, index) => (
+                        <option
+                          value={params.origin.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>technicalControl</span>
+                  <select
+                    id="technicalControl"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.technicalControl &&
+                      params.technicalControl.decoded.map((param, index) => (
+                        <option
+                          value={params.technicalControl.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>firstHand</span>
+                  <select
+                    id="firstHand"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.firstHand &&
+                      params.firstHand.decoded.map((param, index) => (
+                        <option
+                          value={params.firstHand.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>2conde main</span>
+                  <input
+                    id="owners"
+                    type="number"
+                    min="0"
+                    max="1"
+                    placeholder="Ex : 75"
+                    className="input input-bordered"
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>externalColor</span>
+                  <select
+                    id="externalColor"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.externalColor &&
+                      params.externalColor.decoded.map((param, index) => (
+                        <option
+                          value={params.externalColor.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>internalColor</span>
+                  <select
+                    id="internalColor"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.internalColor &&
+                      params.internalColor.decoded.map((param, index) => (
+                        <option
+                          value={params.internalColor.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>doors</span>
+                  <input
+                    id="doors"
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 75"
+                    className="input input-bordered"
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>seats</span>
+                  <input
+                    id="seats"
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 75"
+                    className="input input-bordered"
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>length</span>
+                  <input
+                    id="length"
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 75"
+                    className="input input-bordered"
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>trunkVolumeRange</span>
+                  <select
+                    id="trunkVolumeRange"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.trunkVolumeRange &&
+                      params.trunkVolumeRange.decoded.map((param, index) => (
+                        <option
+                          value={params.trunkVolumeRange.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>ratedHorsePower</span>
+                  <input
+                    id="ratedHorsePower"
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 75"
+                    className="input input-bordered"
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>pollutionNorm</span>
+                  <select
+                    id="pollutionNorm"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.pollutionNorm &&
+                      params.pollutionNorm.decoded.map((param, index) => (
+                        <option
+                          value={params.pollutionNorm.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>critAir</span>
+                  <input
+                    id="critAir"
+                    type="number"
+                    min="1"
+                    max="95"
+                    placeholder="Ex : 75"
+                    className="input input-bordered"
+                  />
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>co2</span>
+                  <select
+                    id="co2"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.co2 &&
+                      params.co2.decoded.map((param, index) => (
+                        <option
+                          value={params.co2.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>brand</span>
+                  <select
+                    id="brand"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.brand &&
+                      params.brand.decoded.map((param, index) => (
+                        <option
+                          value={params.brand.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
+                </label>
+              </div>
+              <div>
+                <label className="input-group input-group-vertical">
+                  <span>brand_origin</span>
+                  <select
+                    id="brand_origin"
+                    className="select select-bordered w-100 capitalize"
+                    defaultValue={0}
+                  >
+                    <option disabled selected>
+                      Sélectionner
+                    </option>
+                    {params.brand_origin &&
+                      params.brand_origin.decoded.map((param, index) => (
+                        <option
+                          value={params.brand_origin.encoded[index]}
+                          key={param}
+                          className="capitalize"
+                        >
+                          {param}
+                        </option>
+                      ))}
+                  </select>
                 </label>
               </div>
             </div>
@@ -248,15 +585,15 @@ const CardForm = () => {
               <input type="checkbox" id="my-modal-4" className="modal-toggle" />
               <label htmlFor="my-modal-4" className="modal cursor-pointer">
                 <label className="modal-box relative" htmlFor="">
-                  <h2 className="text-2xl text-white mb-4">
+                  <h2 className="text-2xl mb-4">
                     Voici notre estimation !
                   </h2>
-                  <p className="text-white">
+                  <p>
                     Il est important de se rappeler que toute estimation de
                     valeur pour une voiture n'est qu'une approximation.
                   </p>
                   <hr className="my-4" />
-                  <h3 className="text-xl text-white">
+                  <h3 className="text-xl">
                     Prix de vente :{" "}
                     <span className="font-bold">
                       {carValue &&
